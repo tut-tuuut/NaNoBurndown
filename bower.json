@@ -1,0 +1,16 @@
+{
+  "name": "NaNoBurndown",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tut-tuuut/NaNoBurndown",
+  "authors": [
+    "Agnès H. <agnes.haasser@gmail.com>"
+  ],
+  "keywords": [
+    "nanowrimo",
+    "chart"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chart.js": "~0.1.0"
+  }
+}
