@@ -11,6 +11,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "chart.js": "~0.1.0"
+    "highcharts-release": "~4.0.4"
   }
 }
