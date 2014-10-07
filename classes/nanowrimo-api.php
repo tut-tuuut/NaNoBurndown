@@ -3,6 +3,8 @@
 class NanowrimoApi
 {
     protected $base_url = 'http://nanowrimo.org/wordcount_api/';
+    protected $target = 50000;
+    protected $nb_of_days = 30;
 
     protected $services = [
         'user_wc_history' => 'wchistory/',
@@ -10,6 +12,7 @@ class NanowrimoApi
 
     protected $user = '';
     public $user_name = '';
+    protected $wc;
 
     public function getUserWcHistory($user = '')
     {
@@ -27,14 +30,18 @@ class NanowrimoApi
         $this->user_name = $xml->uname;
         $wc = array();
         $total = 0;
+        $expected_total = 0;
         foreach ($xml->wordcounts->wcentry as $k => $entry) {
             $total += (int)$entry->wc;
+            $expected_total += ceil($this->target/$this->nb_of_days);
             $wc[] = [
                 'date' => $entry->wcdate,
                 'wc' => $entry->wc,
                 'subtotal' => $total,
+                'expected' => $expected_total,
                 ];
         }
+        $this->wc = $wc;
         return $wc;
     }
 }

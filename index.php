@@ -12,21 +12,32 @@ $wc = $api->getUserWcHistory('kerryahn');
 ?>
 <h1>Résultats pour <?= $api->user_name ?></h1>
 <?php if (count($wc) > 0): ?>
-	<table>
-		<tr>
+	<table  class="highchart" data-graph-container-before="1" data-graph-type="line" data-graph-yaxis-1-min="0">
+		<thead><tr>
 			<th>Date</th>
-			<th>Mots</th>
-			<th>Sous-total</th>
-		</tr>
+			<th>La cible</th>
+			<th>La réalité</th>
+		</tr></thead>
+		<tbody>
 		<?php foreach ($wc as $k => $entry): ?>
 		<tr>
 			<td><?= $entry['date'] ?></td>
-			<td><?= $entry['wc'] ?></td>
+			<td><?= $entry['expected'] ?></td>
 			<td><?= $entry['subtotal'] ?></td>
 		</tr>
 		<?php endforeach; ?>
+		</tbody>
 	</table>
 
 <?php endif; ?>
+
+<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<script src="bower_components/highcharts/highcharts.js" type="text/javascript"></script>
+<script src="bower_components/highchartTable/jquery.highchartTable.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('table.highchart').highchartTable();
+});
+</script>
 </body>
 </html>
