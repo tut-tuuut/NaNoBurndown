@@ -12,7 +12,7 @@ $wc = $api->getUserWcHistory('kerryahn');
 ?>
 <h1>Résultats pour <?= $api->user_name ?></h1>
 <?php if (count($wc) > 0): ?>
-	<table  class="highchart" data-graph-container-before="1" data-graph-type="line" data-graph-yaxis-1-min="0">
+	<table  class="highchart" data-graph-container-before="1" data-graph-type="line" data-graph-yaxis1-min="0">
 		<thead><tr>
 			<th>Date</th>
 			<th>La cible</th>
