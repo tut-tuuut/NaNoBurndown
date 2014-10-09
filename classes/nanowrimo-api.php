@@ -77,4 +77,12 @@ class NanowrimoApi
             'cheese'=> $cheese,
         );
     }
+
+    public function setTarget($number)
+    {
+        $number = (int)$number;
+        if ($number > 0) {
+            $this->target = $number;
+        }
+    }
 }
