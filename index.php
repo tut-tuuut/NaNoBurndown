@@ -6,11 +6,23 @@
 	<title>NaNoWriMo Burndown</title>
 </head>
 <body>
-<h1>Héhé</h1>
+<h1>NaNoWriMo Website</h1>
 <?php $api = new NanowrimoApi();
-$wc = $api->getUserWcHistory('kerryahn');
+$api->setUserId($_GET['user_id']);
+$wc = array();
+try {
+$wc = $api->getUserWcHistory();
+} catch (Exception $e) { ?>
+<div class="error">
+	NaNoWriMo website returned an error:
+	<p>
+		<?= $e->getMessage(); ?>
+	</p>
+</div>
+<?php
+ }
 ?>
-<h1>Résultats pour <?= $api->user_name ?></h1>
+<h1>Résultats pour <?= $api->getUserName() ?></h1>
 <?php if (count($wc) > 0): ?>
 	<table  class="highchart" data-graph-container-before="1" data-graph-type="line" data-graph-yaxis1-min="0">
 		<thead><tr>

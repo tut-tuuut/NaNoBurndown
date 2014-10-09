@@ -11,13 +11,13 @@ class NanowrimoApi
     ];
 
     protected $user = '';
-    public $user_name = '';
+    protected $user_name = '';
     protected $wc;
 
     public function getUserWcHistory($user = '')
     {
         if (!$user && !$this->user) {
-            echo 'give me a user plz';
+            echo '<p class="error">give me a user plz</p>';
             return;
         } elseif (!$user) {
             $user = $this->user;
@@ -43,5 +43,15 @@ class NanowrimoApi
         }
         $this->wc = $wc;
         return $wc;
+    }
+
+    public function setUserId($user)
+    {
+        $this->user = $user;
+    }
+
+    public function getUserName()
+    {
+        return $this->user_name;
     }
 }
