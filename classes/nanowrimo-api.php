@@ -13,6 +13,7 @@ class NanowrimoApi
     protected $user = '';
     protected $user_name = '';
     protected $wc;
+    protected $total;
 
     public function getUserWcHistory($user = '')
     {
@@ -42,6 +43,7 @@ class NanowrimoApi
                 ];
         }
         $this->wc = $wc;
+        $this->total = $total;
         return $wc;
     }
 
@@ -53,5 +55,26 @@ class NanowrimoApi
     public function getUserName()
     {
         return $this->user_name;
+    }
+
+    /**
+     *  Get number of words before having a "round" count
+     *  on total and today's word count 
+     */
+    public function getWineAndCheese()
+    {
+
+        $today = end($this->wc)['wc'];
+        $total = $this->total;
+
+        $wine = $today != 0 ? $today%1000 : 1000;
+        $cheese = $total != 0 ? $total%1000 : 1000;
+
+        return array(
+            'total' => $total,
+            'today' => $today,
+            'wine'  => $wine,
+            'cheese'=> $cheese,
+        );
     }
 }

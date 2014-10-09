@@ -3,10 +3,10 @@
 <html lang="en" class="">
 <head>
 	<meta charset="utf8">
-	<title>NaNoWriMo Burndown</title>
+	<title>NaNoWriMo Burnup</title>
 </head>
 <body>
-<h1>NaNoWriMo Website</h1>
+<h1>NaNoWriMo Burnup</h1>
 <?php $api = new NanowrimoApi();
 $api->setUserId($_GET['user_id']);
 $wc = array();
@@ -22,8 +22,17 @@ $wc = $api->getUserWcHistory();
 <?php
  }
 ?>
-<h1>Résultats pour <?= $api->getUserName() ?></h1>
+
 <?php if (count($wc) > 0): ?>
+	<h1>Résultats pour <?= $api->getUserName() ?></h1>
+	<h2>Vin et fromage</h2>
+	<?php $wineAndCheese = $api->getWineAndCheese(); ?>
+	<ul>
+		<li>Total : <?= (int)$wineAndCheese['total'] ?></li>
+		<li>Aujourd'hui : <?= (int)$wineAndCheese['today'] ?></li>
+		<li>Vin : <?= (int)$wineAndCheese['wine'] ?></li>
+		<li>Fromage : <?= (int)$wineAndCheese['cheese'] ?></li>
+	</ul>
 	<table  class="highchart" data-graph-container-before="1" data-graph-type="line" data-graph-yaxis1-min="0">
 		<thead><tr>
 			<th>Date</th>
