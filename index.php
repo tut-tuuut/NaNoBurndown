@@ -1,9 +1,10 @@
 <?php require_once('classes/nanowrimo-api.php'); ?>
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="fr" class="">
 <head>
 	<meta charset="utf8">
 	<title>NaNoWriMo Burnup</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h1>NaNoWriMo Burnup</h1>
