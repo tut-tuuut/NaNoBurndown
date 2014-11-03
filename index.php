@@ -8,7 +8,10 @@
 <body>
 <h1>NaNoWriMo Burnup</h1>
 <?php $api = new NanowrimoApi();
-$api->setUserId($_GET['user_id']);
+if (isset($_GET['user_id'])) {
+	$api->setUserId($_GET['user_id']);
+}
+
 if (isset($_GET['target'])) {
 	$api->setTarget($_GET['target']);
 }
